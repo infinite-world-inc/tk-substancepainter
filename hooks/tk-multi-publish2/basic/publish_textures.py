@@ -270,6 +270,10 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
 
         for src in textures:
             _, filenamefile = os.path.split(src)
+            self.logger.info(publish_path)
+            self.logger.info(type(publish_path))
+            self.logger.info(filenamefile)
+            self.logger.info(type(filenamefile))
             dst = os.path.join(publish_path, filenamefile)
             sgtk.util.filesystem.copy_file(src, dst)
 
