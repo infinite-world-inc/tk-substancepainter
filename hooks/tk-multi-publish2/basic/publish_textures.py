@@ -274,7 +274,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
             self.logger.info(type(publish_path))
             self.logger.info(filenamefile)
             self.logger.info(type(filenamefile))
-            dst = os.path.join(publish_path, filenamefile)
+            dst = os.path.join(publish_path, filenamefile.decode())
             sgtk.util.filesystem.copy_file(src, dst)
 
         self.logger.info("A Publish will be created in Shotgun and linked to:")
