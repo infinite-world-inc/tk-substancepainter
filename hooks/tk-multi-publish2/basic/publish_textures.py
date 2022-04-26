@@ -205,7 +205,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         if publish_template:
             item.properties["publish_template"] = publish_template
         else:
-            error_msg = "Validation failed. Publish template not found"
+            error_msg = "Validation failed. Publish template {} not found".format(publish_template_setting.value) 
             self.logger.error(error_msg)
             raise Exception(error_msg)
 
