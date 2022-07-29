@@ -1,13 +1,3 @@
-# Copyright (c) 2017 Shotgun Software Inc.
-#
-# CONFIDENTIAL AND PROPRIETARY
-#
-# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
-# Source Code License included in this distribution package. See LICENSE.
-# By accessing, using, copying or modifying this work you indicate your
-# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
-# not expressly granted therein are reserved by Shotgun Software Inc.
-
 import os
 import pprint
 
@@ -140,7 +130,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         List of item types that this plugin is interested in.
 
         Only items matching entries in this list will be presented to the
-        accept() method. Strings can contain glob patters such as *, for 
+        accept() method. Strings can contain glob patters such as *, for
         example ["substancepainter.*", "file.substancepainter"]
         """
         return ["substancepainter.textures"]
@@ -148,7 +138,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
     def accept(self, settings, item):
         """
         Method called by the publisher to determine if an item is of any
-        interest to this plugin. Only items matching the filters defined via 
+        interest to this plugin. Only items matching the filters defined via
         the item_filters property will be presented to this method.
 
         A publish task will be generated for each item accepted here. Returns a
@@ -189,7 +179,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         boolean to indicate validity.
 
         :param settings: Dictionary of Settings. The keys are strings, matching
-                         the keys returned in the settings property. The values 
+                         the keys returned in the settings property. The values
                          are `Setting` instances.
         :param item: Item to process
         :returns: True if item is valid, False otherwise.
@@ -205,7 +195,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         if publish_template:
             item.properties["publish_template"] = publish_template
         else:
-            error_msg = "Validation failed. Publish template {} not found".format(publish_template_setting.value) 
+            error_msg = "Validation failed. Publish template {} not found".format(publish_template_setting.value)
             self.logger.error(error_msg)
             raise Exception(error_msg)
 
@@ -343,13 +333,13 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         """
         Given a context, publish name and type, find all publishes from ShotGrid
         that match.
-        
+
         :param ctx:             Context to use when looking for publishes
         :param publish_name:    The name of the publishes to look for
         :param publish_type:    The type of publishes to look for
-        
+
         :returns:               A list of ShotGrid publish records that match the search
-                                criteria        
+                                criteria
         """
         publish_entity_type = sgtk.util.get_published_file_entity_type(self.parent.sgtk)
         if publish_entity_type == "PublishedFile":

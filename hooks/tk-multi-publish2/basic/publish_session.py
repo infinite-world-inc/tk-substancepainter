@@ -1,13 +1,3 @@
-# Copyright (c) 2017 Shotgun Software Inc.
-#
-# CONFIDENTIAL AND PROPRIETARY
-#
-# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
-# Source Code License included in this distribution package. See LICENSE.
-# By accessing, using, copying or modifying this work you indicate your
-# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
-# not expressly granted therein are reserved by Shotgun Software Inc.
-
 import os
 
 import sgtk
@@ -137,7 +127,7 @@ class SubstancePainterSessionPublishPlugin(HookBaseClass):
         List of item types that this plugin is interested in.
 
         Only items matching entries in this list will be presented to the
-        accept() method. Strings can contain glob patters such as *, for 
+        accept() method. Strings can contain glob patters such as *, for
         example ["substancepainter.*", "file.substancepainter"]
         """
         return ["substancepainter.session"]
@@ -145,7 +135,7 @@ class SubstancePainterSessionPublishPlugin(HookBaseClass):
     def accept(self, settings, item):
         """
         Method called by the publisher to determine if an item is of any
-        interest to this plugin. Only items matching the filters defined via 
+        interest to this plugin. Only items matching the filters defined via
         the item_filters property will be presented to this method.
 
         A publish task will be generated for each item accepted here. Returns a
@@ -196,7 +186,7 @@ class SubstancePainterSessionPublishPlugin(HookBaseClass):
         boolean to indicate validity.
 
         :param settings: Dictionary of Settings. The keys are strings, matching
-                         the keys returned in the settings property. The values 
+                         the keys returned in the settings property. The values
                          are `Setting` instances.
         :param item: Item to process
         :returns: True if item is valid, False otherwise.
