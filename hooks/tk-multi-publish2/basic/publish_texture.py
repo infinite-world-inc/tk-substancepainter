@@ -46,8 +46,8 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         loader_url = "https://support.shotgunsoftware.com/hc/en-us/articles/219033078"
 
         return """
-        Publishes the file to Shotgun. A <b>Publish</b> entry will be
-        created in Shotgun which will include a reference to the file's current
+        Publishes the file to ShotGrid. A <b>Publish</b> entry will be
+        created in ShotGrid which will include a reference to the file's current
         path on disk. If a publish template is configured, a copy of the
         current session will be copied to the publish template path which
         will be the file that is published. Other users will be able to access
@@ -62,7 +62,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         file to the next version after publishing.
 
         The <code>version</code> field of the resulting <b>Publish</b> in
-        Shotgun will also reflect the version number identified in the filename
+        ShotGrid will also reflect the version number identified in the filename
         The basic worklfow recognizes the following version formats by default:
 
         <ul>
@@ -261,7 +261,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
 
         sgtk.util.filesystem.copy_file(src, publish_path)
 
-        self.logger.info("A Publish will be created in Shotgun and linked to:")
+        self.logger.info("A Publish will be created in ShotGrid and linked to:")
         self.logger.info("  %s" % (publish_path,))
 
         # arguments for publish registration
@@ -329,14 +329,14 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
 
     def _find_publishes(self, ctx, publish_name, publish_type):
         """
-        Given a context, publish name and type, find all publishes from Shotgun
+        Given a context, publish name and type, find all publishes from ShotGrid
         that match.
         
         :param ctx:             Context to use when looking for publishes
         :param publish_name:    The name of the publishes to look for
         :param publish_type:    The type of publishes to look for
         
-        :returns:               A list of Shotgun publish records that match the search
+        :returns:               A list of ShotGrid publish records that match the search
                                 criteria        
         """
         publish_entity_type = sgtk.util.get_published_file_entity_type(self.parent.sgtk)
@@ -358,7 +358,7 @@ class SubstancePainterTexturesPublishPlugin(HookBaseClass):
         if publish_type:
             filters.append([publish_type_field, "is", publish_type])
 
-        # retrieve a list of all matching publishes from Shotgun:
+        # retrieve a list of all matching publishes from ShotGrid:
         sg_publishes = []
         try:
             query_fields = ["version_number"]

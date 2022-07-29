@@ -185,7 +185,7 @@ class BreakdownSceneOperations(HookBaseClass):
 
                 for usage in res_info["usages"]:
                     new_url = engine.app.import_project_resource(
-                        new_path, usage, "Shotgun"
+                        new_path, usage, "ShotGrid"
                     )
 
                     engine.log_debug("Updating usage: %s" % usage)

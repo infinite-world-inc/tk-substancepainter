@@ -79,23 +79,23 @@ def to_new_version_system(version):
 # logging functionality
 def display_error(msg):
     t = time.asctime(time.localtime())
-    print("%s - Shotgun Error | Substance Painter engine | %s " % (t, msg))
+    print("%s - ShotGrid Error | Substance Painter engine | %s " % (t, msg))
 
 
 def display_warning(msg):
     t = time.asctime(time.localtime())
-    print("%s - Shotgun Warning | Substance Painter engine | %s " % (t, msg))
+    print("%s - ShotGrid Warning | Substance Painter engine | %s " % (t, msg))
 
 
 def display_info(msg):
     t = time.asctime(time.localtime())
-    print("%s - Shotgun Info | Substance Painter engine | %s " % (t, msg))
+    print("%s - ShotGrid Info | Substance Painter engine | %s " % (t, msg))
 
 
 def display_debug(msg):
     if os.environ.get("TK_DEBUG") == "1":
         t = time.asctime(time.localtime())
-        print("%s - Shotgun Debug | Substance Painter engine | %s " % (t, msg))
+        print("%s - ShotGrid Debug | Substance Painter engine | %s " % (t, msg))
 
 
 # methods to support the state when the engine cannot start up
@@ -146,9 +146,9 @@ def refresh_engine(scene_name, prev_context):
             # for menus if it exists
             ctx = engine.sgtk.context_from_entity_dictionary(engine.context.project)
             message = (
-                "Shotgun Substance Painter Engine could not detect "
+                "ShotGrid Substance Painter Engine could not detect "
                 "the context\n from the project loaded. "
-                "Shotgun menus will be reset \n"
+                "ShotGrid menus will be reset \n"
                 "to the project '%s' "
                 "context."
                 "\n" % engine.context.project.get("name")
@@ -158,7 +158,7 @@ def refresh_engine(scene_name, prev_context):
         except tank.TankError as e:
             (exc_type, exc_value, exc_traceback) = sys.exc_info()
             message = ""
-            message += "Shotgun Substance Painter Engine cannot be started:.\n"
+            message += "ShotGrid Substance Painter Engine cannot be started:.\n"
             message += "Please contact support@shotgunsoftware.com\n\n"
             message += "Exception: %s - %s\n" % (exc_type, exc_value)
             message += "Traceback (most recent call last):\n"
@@ -217,7 +217,7 @@ class SubstancePainterEngine(Engine):
             dlg = QtWidgets.QMessageBox(self._qt_app_central_widget)
             dlg.setIcon(level_icon[level])
             dlg.setText(msg)
-            dlg.setWindowTitle("Shotgun Substance Painter Engine")
+            dlg.setWindowTitle("ShotGrid Substance Painter Engine")
             dlg.setWindowFlags(dlg.windowFlags() | QtCore.Qt.WindowStaysOnTopHint)
             dlg.show()
             dlg.exec_()
@@ -441,9 +441,9 @@ class SubstancePainterEngine(Engine):
                 "are Mac, Linux 64 and Windows 64."
             )
 
-        # default menu name is Shotgun but this can be overridden
+        # default menu name is ShotGrid but this can be overridden
         # in the configuration to be sgtk in case of conflicts
-        self._menu_name = "Shotgun"
+        self._menu_name = "ShotGrid"
         if self.get_setting("use_sgtk_as_menu_name", False):
             self._menu_name = "Sgtk"
 
@@ -457,16 +457,16 @@ class SubstancePainterEngine(Engine):
 
         if painter_version < painter_min_supported_version:
             msg = (
-                "Shotgun integration is not compatible with Substance Painter versions"
+                "ShotGrid integration is not compatible with Substance Painter versions"
                 " older than %s" % MINIMUM_SUPPORTED_VERSION
             )
             raise tank.TankError(msg)
 
         if painter_version > painter_min_supported_version:
             # show a warning that this version of Substance Painter isn't yet fully tested
-            # with Shotgun:
+            # with ShotGrid:
             msg = (
-                "The Shotgun Pipeline Toolkit has not yet been fully "
+                "The ShotGrid Pipeline Toolkit has not yet been fully "
                 "tested with Substance Painter %s.  "
                 "You can continue to use Toolkit but you may experience "
                 "bugs or instability."
@@ -532,7 +532,7 @@ class SubstancePainterEngine(Engine):
 
     def display_menu(self, pos=None):
         """
-        Shows the engine Shotgun menu.
+        Shows the engine ShotGrid menu.
         """
         if self._menu_generator:
             self._menu_generator.show(pos)
@@ -724,13 +724,13 @@ class SubstancePainterEngine(Engine):
         :type record: :class:`~python.logging.LogRecord`
         """
         # Give a standard format to the message:
-        #     Shotgun <basename>: <message>
+        #     ShotGrid <basename>: <message>
         # where "basename" is the leaf part of the logging record name,
         # for example "tk-multi-shotgunpanel" or "qt_importer".
         if record.levelno < logging.INFO:
-            formatter = logging.Formatter("Debug: Shotgun %(basename)s: %(message)s")
+            formatter = logging.Formatter("Debug: ShotGrid %(basename)s: %(message)s")
         else:
-            formatter = logging.Formatter("Shotgun %(basename)s: %(message)s")
+            formatter = logging.Formatter("ShotGrid %(basename)s: %(message)s")
 
         msg = formatter.format(record)
 
