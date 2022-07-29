@@ -113,9 +113,9 @@ def refresh_engine(scene_name, prev_context):
         if prev_context and prev_context != engine.context:
             engine.change_context(prev_context)
 
-        # shotgun menu may have been removed, so add it back in if its not
+        # shotgrid menu may have been removed, so add it back in if its not
         # already there.
-        engine.create_shotgun_menu()
+        engine.create_shotgrid_menu()
         return
 
     # determine the tk instance and ctx to use:
@@ -155,16 +155,16 @@ def refresh_engine(scene_name, prev_context):
             message += "\n".join(traceback.format_tb(exc_traceback))
 
             # disabled menu, could not get project context
-            engine.create_shotgun_menu(disabled=True)
+            engine.create_shotgrid_menu(disabled=True)
             engine.show_error(message)
             return
 
     if ctx != engine.context:
         engine.change_context(ctx)
 
-    # shotgun menu may have been removed,
+    # shotgrid menu may have been removed,
     # so add it back in if its not already there.
-    engine.create_shotgun_menu()
+    engine.create_shotgrid_menu()
 
 
 class SubstancePainterEngine(Engine):
@@ -280,7 +280,7 @@ class SubstancePainterEngine(Engine):
     def __register_open_log_folder_command(self):
         """
         # add a 'open log folder' command to the engine's context menu
-        # note: we make an exception for the shotgun engine which is a
+        # note: we make an exception for the shotgrid engine which is a
         # special case.
         """
         if self.name != SHOTGUN_ENGINE_NAME:
@@ -499,14 +499,14 @@ class SubstancePainterEngine(Engine):
                 )
                 os.environ["SHOTGUN_SKIP_QTWEBENGINEWIDGETS_IMPORT"] = "1"
 
-    def create_shotgun_menu(self, disabled=False):
+    def create_shotgrid_menu(self, disabled=False):
         """
-        Creates the main shotgun menu in substancepainter.
+        Creates the main shotgrid menu in substancepainter.
         Note that this only creates the menu, not the child actions
         :return: bool
         """
 
-        # only create the shotgun menu if not in batch mode and menu doesn't
+        # only create the shotgrid menu if not in batch mode and menu doesn't
         # already exist
         if self.has_ui:
             # create our menu handler
@@ -559,8 +559,8 @@ class SubstancePainterEngine(Engine):
         # Run a series of app instance commands at startup.
         self._run_app_instance_commands()
 
-        # Create the shotgun menu
-        self.create_shotgun_menu()
+        # Create the shotgrid menu
+        self.create_shotgrid_menu()
 
         # Let the app know we are ready for action!
         self._dcc_app.broadcast_event("ENGINE_READY")
@@ -592,7 +592,7 @@ class SubstancePainterEngine(Engine):
         if self.get_setting("automatic_context_switch", True):
             # finally create the menu with the new context if needed
             if old_context != new_context:
-                self.create_shotgun_menu()
+                self.create_shotgrid_menu()
 
     def _run_app_instance_commands(self):
         """

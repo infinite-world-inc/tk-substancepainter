@@ -172,7 +172,7 @@ class MenuGenerator(object):
 
     def _jump_to_sg(self):
         """
-        Jump to shotgun, launch web browser
+        Jump to shotgrid, launch web browser
         """
         url = self._engine.context.shotgun_url
         QtGui.QDesktopServices.openUrl(QtCore.QUrl(url))
