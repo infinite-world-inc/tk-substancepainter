@@ -6,13 +6,13 @@ Contact : [Diego Garcia Huerta](https://www.linkedin.com/in/diegogh/)
 
 ## Overview
 
-Implementation of a shotgun engine for [**Substance Painter**](https://www.allegorithmic.com/products/substance-painter). It supports the classic bootstrap startup methodology and integrates with Substance Painter adding a shotgun menu in it's plugin toolbar. 
+Implementation of a shotgun engine for [**Substance Painter**](https://www.allegorithmic.com/products/substance-painter). It supports the classic bootstrap startup methodology and integrates with Substance Painter adding a shotgun menu in its plugin toolbar. 
 
 * [Engine Installation](#engine-installation)
 * [Configuring your project for Shotgun Toolkit](#configuring-your-project-for-shotgun-toolkit)
 * [Modifying the toolkit configuration files to add this engine and related apps](#modifying-the-toolkit-configuration-files-to-add-this-engine-and-related-apps)
 * [Modifying the Templates](#modifying-the-templates)
-* [Configuring Substance Painter in the software launcher](#configuring-substancepainter-in-the-software-launcher)
+* [Configuring Substance Painter in the software launcher](#configuring-substance-painter-in-the-software-launcher)
 * [Caching and downloading the engine into disk](#caching-and-downloading-the-engine-into-disk)
 
 With the engine, hooks for most of the standard tk application are provided:
@@ -23,10 +23,10 @@ With the engine, hooks for most of the standard tk application are provided:
 * [tk-multi-publish2](#tk-multi-publish2)
 * [tk-multi-breakdown](#tk-multi-breakdown)
 
-**Note(s) for developers:**The communication between the engine written in python and substance painter is done through QtWebsockets implementation in QML and in PySide2. PySide2 is borrowed from the the shotgun [tk-framework-unrealqt](https://github.com/ue4plugins/tk-framework-unrealqt) framework.
+**Note(s) for developers:**The communication between the engine written in python and substance painter is done through QtWebsockets implementation in QML and in PySide2. PySide2 is borrowed from the shotgun [tk-framework-unrealqt](https://github.com/ue4plugins/tk-framework-unrealqt) framework.
 
 
-**This engine has been developed and tested in Windows using version 2018.3.1. Linux and Mac users might be out of luck for now for sevral reasons, ie. Substance Painter for those platforms does not provide a reliable way to figure out what version of the software is installed, and Pyside2 unrealqt framework is not available for those platforms either.**
+**This engine has been developed and tested in Windows using version 2018.3.1. Linux and Mac users might be out of luck for now for several reasons, i.e. Substance Painter for those platforms does not provide a reliable way to figure out what version of the software is installed, and Pyside2 unrealqt framework is not available for those platforms either.**
 
 
 ## Engine Installation
@@ -47,7 +47,7 @@ Here are detailed instructions on how to make this engine work assuming you use 
 ## Configuring your project for Shotgun Toolkit
 
 If you haven't done it yet, make sure you have gone through the basic steps to configure your project to use shotgun toolkit, this can be done in shotgun desktop app, by:
-* enter into the project clicking it's icon
+* enter into the project clicking its icon
 
 * click on the user icon to show more options (bottom right)
 
@@ -55,13 +55,13 @@ If you haven't done it yet, make sure you have gone through the basic steps to c
 
     ![advanced_project_setup](config/images/advanced_project_setup.png)
 
-* *Select a configuration*: "Shotgun Default" or pick an existing porject that you have already setup pages and filters for.
+* *Select a configuration*: "Shotgun Default" or pick an existing project that you have already setup pages and filters for.
 ![select_a_project_configuration](config/images/select_a_project_configuration.png)
 
 * *Select a Shotgun Configuration*: select "default" which will download the standard templates from shotgun. (this documentation is written assuming you have this configuration)
 ![select_a_shotgun_configuration](config/images/select_a_shotgun_configuration.png)
 
-* *Define Storages*: Make sure you name your first storage "primary", and a choose a primary folder where all the 'jobs' publishes will be stored, in this case "D:\demo\jobs" for illustrative purposes.
+* *Define Storages*: Make sure you name your first storage "primary", and choose a primary folder where all the 'jobs' publishes will be stored, in this case "D:\demo\jobs" for illustrative purposes.
 ![define_storages](config/images/define_storages.png)
 
 * *Project Folder Name*: This is the name of the project in disk. You might have some sort of naming convention for project that you might follow, or leave as it is. (My advice is that you do not include spaces in the name)
@@ -151,14 +151,14 @@ The additions to `config/core/templates.yml` are provided also under the config 
 
 In order for our application to show up in the shotgun launcher, we need to add it to our list of software that is valid for this project.
 
-* Navigate to your shotgun url, ie. `example.shotgunstudio.com`, and once logged in, clink in the Shotgun Settings menu, the arrow at the top right of the webpage, close to your user picture. 
+* Navigate to your shotgun url, i.e. `example.shotgunstudio.com`, and once logged in, clink in the Shotgun Settings menu, the arrow at the top right of the webpage, close to your user picture. 
 * Click in the Software menu
 ![select_a_project_configuration](config/images/select_a_project_configuration.png)
 
 * We will create a new entry for Substance Painter, called "Substance Painter" and whose description was conveniently copy and pasted from Wikipedia.
 ![create_new_software](config/images/create_new_software.png)
 
-* We now sould specify the engine this software will use. "tk-substancepainter"
+* We now should specify the engine this software will use. "tk-substancepainter"
 ![software_specify_engine](config/images/software_specify_engine.png)
 
 * Note that you can restrict this application to certain projects by specifying the project under the projects column. If no projects are specified this application will show up for all the projects that have this engine in their configuration files.
@@ -189,7 +189,7 @@ This application forms the basis for file management in the Shotgun Pipeline Too
 
 Basic hooks have been implemented for this tk-app to work. open, save, save_as, reset, and current_path are the scene operations implemented.
 
-Note that "New file" does not actually create a new substance painter project, just changes the context. Unfortunately the dialog to create a new project is not accesible through code, so could not be automated without loosing functionality. The user is responsible for creating a new project as normal in substance painter after "New File" is clicked.  
+Note that "New file" does not actually create a new substance painter project, just changes the context. Unfortunately the dialog to create a new project is not accessible through code, so could not be automated without loosing functionality. The user is responsible for creating a new project as normal in substance painter after "New File" is clicked.  
 
 ## [tk-multi-snapshot](https://support.shotgunsoftware.com/hc/en-us/articles/219033068)
 A Shotgun Snapshot is a quick incremental backup that lets you version and manage increments of your work without sharing it with anyone else. Take a Snapshot, add a description and a thumbnail, and you create a point in time to which you can always go back to at a later point and restore. This is useful if you are making big changes and want to make sure you have a backup of previous versions of your scene.
@@ -220,7 +220,7 @@ Hook provided support the updating of the following type of files and their rela
 - Substance Smart Mask: (smartmask)
 - Spmsk File: (smartmask)
 
-Note that the Loader always loas the textures within the Project shelf resources folder.
+Note that the Loader always loads the textures within the Project shelf resources folder.
 
 ## [tk-multi-publish2](https://support.shotgunsoftware.com/hc/en-us/articles/115000097513)
 ![tk-substancepainter_03](config/images/tk-substancepainter_03.PNG)
@@ -229,14 +229,14 @@ The Publish app allows artists to publish their work so that it can be used by a
 
 The basic publishing of the current session is provided with this app. In addition to this, two different modes for the exported textures are provided:
 
-In the tk-multi-publish2.yml configuration file, under the collector_settings section, you will find a setting that allows to publish textures as a single folder ("Texture Folder" published file type), or publish the textures individually as textures ("Texture" published file type). By default or if this setting is missing it is configured to publish a a Texture Folder.
+In the tk-multi-publish2.yml configuration file, under the collector_settings section, you will find a setting that allows to publish textures as a single folder ("Texture Folder" published file type), or publish the textures individually as textures ("Texture" published file type). By default, or if this setting is missing, it is configured to publish a Texture Folder.
 
 ```yaml
 settings.tk-multi-publish2.substancepainter.asset_step:
   collector: "{self}/collector.py:{engine}/tk-multi-publish2/basic/collector.py"
   collector_settings:
       Work Template: substancepainter_asset_work
-      **Publish Textures as Folder: true**
+      Publish Textures as Folder: true
 ```
 
 
@@ -245,7 +245,7 @@ settings.tk-multi-publish2.substancepainter.asset_step:
 
 The Scene Breakdown App shows you a list of items you have loaded (referenced) in your scene and tells you which ones are out of date. From this overview, you can select multiple objects and click the update button which will update all your selected items to use the latest published version.
 
-Note that this tool will only update the resources that have been loaded previously trough the Loader toolkit app.
+Note that this tool will only update the resources that have been loaded previously through the Loader toolkit app.
 
 It also displays what textures loaded from the Loader app are in used within the scene and which ones are not. The tidying up of the shelf resources is left for the user.
 
