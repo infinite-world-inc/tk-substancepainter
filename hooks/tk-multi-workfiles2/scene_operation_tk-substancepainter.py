@@ -68,7 +68,7 @@ class SceneOperation(HookClass):
             engine.app.open_project(file_path)
 
         elif operation == "save":
-            engine.app.save()
+            engine.app.save_project()
 
         elif operation == "save_as":
             engine.app.save_project_as(file_path)

@@ -41,3 +41,14 @@ class SceneOperation(HookClass):
 
         elif operation == "save":
             engine.app.save_project()
+
+        elif operation == "save_as":
+            engine.app.save_project_as(file_path)
+
+        elif operation == "reset":
+            engine.app.close_project()
+            return True
+
+        elif operation == "prepare_new":
+            # ask for the mesh file to load into a new project
+            pass
